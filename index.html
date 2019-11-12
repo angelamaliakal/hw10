@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<title>API FUN!</title>
+	<meta charset="utf-8"/>
+    <h1 style="text-align:center;">Dog Pictures!</h1>
+	<script>
+		function getDog() {
+			Request = new XMLHttpRequest();
+			Request.open("GET", "https://random.dog/woof.json");
+			Request.onreadystatechange = function() {
+				if (Request.readyState == 4 && Request.status == 200) {
+					dogResult = Request.responseText;
+					jpg = JSON.parse(dogResult);
+					img = JSON.stringify(jpg.url)
+					img = img.replace(/^"(.*)"$/, '$1');
+					document.getElementById("puppy").src = img;
+				}
+
+			}
+			Request.send();
+		}
+	</script>
+</head>
+<body onload="getDog()">
+<button onclick="getDog()">Click for Dog Image</button>
+<img id="puppy" src=img width="400px" height="200px">
+
+<p>
+1. Describe the API you selected and what it does. <br>
+I selected a random dog pictures API. It provides random images of dogs. <br><br>
+2. Cite the website where you found it. <br>
+I used an API from this website: https://github.com/public-apis/public-apis#animals <br><br>
+3. Describe the options you used for the API request. <br>
+I used the image and its URL. <br><br>
+4. Give two applications where this API would be helpful. <br>
+&nbsp&nbsp&nbsp a) You could use this on an adoption page to show dogs that are up for adoption. <br>
+&nbsp&nbsp&nbsp b) You could use this on a children's website.
+</p>
+
+
+</body>
+</html>
